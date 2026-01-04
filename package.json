@@ -1,0 +1,15 @@
+{
+  "name": "media-system-2026-2",
+  "version": "1.0.0",
+  "description": "\"# media-system-2026-2\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ngnewgallery": "ng new public-gallery"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/cli": "^21.0.4"
+  }
+}
