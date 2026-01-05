@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ngnewgallery": "ng new public-gallery"
+    "ngnewgallery": "ng new public-gallery",
+    "ngnewadmin": "ng new gallery-admin"
   },
   "author": "",
   "license": "ISC",
