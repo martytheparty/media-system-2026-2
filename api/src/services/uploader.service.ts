@@ -14,4 +14,4 @@ class UploaderService {
   }
 }
 
-module.exports = { UploaderService };
+export = UploaderService;

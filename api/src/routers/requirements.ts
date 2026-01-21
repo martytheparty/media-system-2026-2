@@ -1,5 +1,5 @@
 const express = require('express');
-const { RequirementsController } = require('../controllers/requirements.controller');
+import RequirementsController = require('../controllers/requirements.controller');
 
 const router = express.Router();
 const controller = new RequirementsController();
@@ -28,4 +28,4 @@ const controller = new RequirementsController();
 
 router.get('/', controller.getRequirements.bind(controller));
 
-module.exports = router;
+export = router;
