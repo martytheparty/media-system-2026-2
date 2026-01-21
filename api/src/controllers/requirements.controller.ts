@@ -1,6 +1,8 @@
-import { UploaderService } from '../services/uploader.service.js';
+import UploaderService = require('../services/uploader.service');
 
-export class RequirementsController {
+class RequirementsController {
+
+  uploaderService;
 
   constructor() {
     this.uploaderService = new UploaderService();
@@ -16,3 +18,5 @@ export class RequirementsController {
     });
   }
 }
+
+export = RequirementsController;

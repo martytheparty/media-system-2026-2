@@ -2,9 +2,9 @@ const express = require('express');
 
 const swaggerUi = require('swagger-ui-express');
 
-const swaggerSpec = require('./swagger');
+const swaggerSpec = require('../swagger');
 
-const requirementsRouter = require('./routers/requirements');
+import requirementsRouter = require('./routers/requirements');
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.get('/health', (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`API listening on port ${PORT}`);
+  console.log(`API listening on port ${PORT}!!?`);
 });
 
 module.exports = app;
