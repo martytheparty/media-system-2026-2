@@ -8,6 +8,9 @@
     "install-nodemon": "npm install nodemon",
     "install-swagger": "npm install swagger-ui-express swagger-jsdoc",
     "install-ts": "npm install -D typescript ts-node @types/node @types/express",
+    "install-dotenv": "npm install dotenv",
+    "install-nodefetch": "npm install node-fetch",
+    "install-nodefetchtypes": "npm install --save-dev @types/node-fetch",
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --watch src --ext ts --exec \"npm run build && node dist/index.js\""
@@ -17,7 +20,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "node-fetch": "^3.3.2",
     "nodemon": "^3.1.11",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
@@ -25,6 +30,7 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.9",
+    "@types/node-fetch": "^2.6.13",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

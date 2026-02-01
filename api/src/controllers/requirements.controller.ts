@@ -8,9 +8,9 @@ class RequirementsController {
     this.uploaderService = new UploaderService();
   }
 
-  getRequirements(req, res) {
-    const ftpConfigured = this.uploaderService.isFtpConfigured();
-    const keyRequired = this.uploaderService.isKeyRequired();
+  async getRequirements(req, res) {
+    const ftpConfigured = await this.uploaderService.isFtpConfigured();
+    const keyRequired = await this.uploaderService.isKeyRequired();
 
     res.json({
       ftpConfigured,
