@@ -1,9 +1,8 @@
+import 'dotenv/config'; // loads .env first
+import { appConfig } from './config/app.config';
 const express = require('express');
-
 const swaggerUi = require('swagger-ui-express');
-
 const swaggerSpec = require('../swagger');
-
 import requirementsRouter = require('./routers/requirements');
 
 const app = express();
@@ -23,9 +22,13 @@ app.get('/health', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = appConfig.port || 3000;
+
+const baseUrl = appConfig.uploaderBaseUrl;
+
 app.listen(PORT, () => {
-  console.log(`API listening on port ${PORT}!!?`);
+  console.log(`API listening on port ${PORT}`);
+  console.log(`Uploader listening at ${baseUrl}`);
 });
 
 module.exports = app;
