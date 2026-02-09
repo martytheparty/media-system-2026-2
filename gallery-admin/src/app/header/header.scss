@@ -5,3 +5,18 @@
 button {
   margin: 5px;
 }
+
+.right-icons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between icons */
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  .key {
+    color: #FFF;
+  }
+}
