@@ -9,7 +9,9 @@
     "test": "ng test",
     "installMaterial": "ng add @angular/material",
     "gheader": "ng g c header",
-    "gfooter": "ng g c footer"
+    "gfooter": "ng g c footer",
+    "sApi": "ng g s services/api",
+    "iRequirements": "ng g i interfaces/requirements"
   },
   "prettier": {
     "printWidth": 100,
