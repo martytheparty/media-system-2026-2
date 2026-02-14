@@ -11,6 +11,7 @@
     "install-dotenv": "npm install dotenv",
     "install-nodefetch": "npm install node-fetch",
     "install-nodefetchtypes": "npm install --save-dev @types/node-fetch",
+    "install-cors": "npm install cors",
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --watch src --ext ts --exec \"npm run build && node dist/index.js\""
@@ -20,6 +21,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "node-fetch": "^3.3.2",

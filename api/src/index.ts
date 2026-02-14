@@ -5,10 +5,13 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('../swagger');
 import requirementsRouter = require('./routers/requirements');
 
+const cors = require('cors');
 const app = express();
 
 // Middleware to parse JSON bodies (future-proof)
 app.use(express.json());
+// Allow all origin
+app.use(cors());
 
 // Swagger UI
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
