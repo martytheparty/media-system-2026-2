@@ -11,7 +11,8 @@
     "gheader": "ng g c header",
     "gfooter": "ng g c footer",
     "sApi": "ng g s services/api",
-    "iRequirements": "ng g i interfaces/requirements"
+    "iRequirements": "ng g i interfaces/requirements",
+    "cKeyDialog": "ng g c dialogs/key"
   },
   "prettier": {
     "printWidth": 100,

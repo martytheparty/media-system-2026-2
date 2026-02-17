@@ -5,13 +5,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Api } from '../services/api';
 import { Subscription } from 'rxjs';
 import { Requirements } from '../interfaces';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { KeyDialogComponent } from '../dialogs/key/key';
 
 @Component({
   selector: 'app-header',
   imports: [
     MatToolbarModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -19,6 +22,7 @@ import { Requirements } from '../interfaces';
 export class Header implements OnInit, OnDestroy {
 
   private api: Api = inject(Api);
+  readonly dialog = inject(MatDialog);
 
   private subscription: Subscription;
 
@@ -33,6 +37,14 @@ export class Header implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log("Check for key requirement...");
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(KeyDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
