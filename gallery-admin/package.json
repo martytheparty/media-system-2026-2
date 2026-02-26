@@ -12,7 +12,8 @@
     "gfooter": "ng g c footer",
     "sApi": "ng g s services/api",
     "iRequirements": "ng g i interfaces/requirements",
-    "cKeyDialog": "ng g c dialogs/key"
+    "cKeyDialog": "ng g c dialogs/key",
+    "cSettingsDialog": "ng g c dialogs/sftpSettings"
   },
   "prettier": {
     "printWidth": 100,
