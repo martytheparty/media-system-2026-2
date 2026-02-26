@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Requirements } from '../interfaces';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { KeyDialogComponent } from '../dialogs/key/key';
+import { SftpSettings } from '../dialogs/sftp-settings/sftp-settings';
 
 @Component({
   selector: 'app-header',
@@ -39,8 +40,16 @@ export class Header implements OnInit, OnDestroy {
     console.log("Check for key requirement...");
   }
 
-  openDialog() {
+  openKeyDialog() {
     const dialogRef = this.dialog.open(KeyDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openSettingsDialog() {
+    const dialogRef = this.dialog.open(SftpSettings);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

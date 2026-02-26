@@ -1,0 +1,11 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* nice spacing between fields */
+  padding: 10px;
+}
+
+.form-title {
+  margin: 15px;
+  text-align: center;
+}
