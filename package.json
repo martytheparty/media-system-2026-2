@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@angular/cli": "^21.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5"
   }
 }
