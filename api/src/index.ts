@@ -3,11 +3,16 @@ import { appConfig } from './config/app.config';
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('../swagger');
-import requirementsRouter = require('./routers/requirements');
+import requirementsRouter = require('./routers/requirements.routes');
+import sftpRouter = require('./routers/sftp.routes');
+const BootStrapSetup = require('./bootstrap/setup');
+
+const bootStrapSetup = new BootStrapSetup();
 
 const cors = require('cors');
 const app = express();
 
+bootStrapSetup.setupDirectories();
 // Middleware to parse JSON bodies (future-proof)
 app.use(express.json());
 // Allow all origin
@@ -16,8 +21,9 @@ app.use(cors());
 // Swagger UI
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Mount your router
+// Mount your routers
 app.use('/requirements', requirementsRouter);
+app.use('/sftp', sftpRouter);
 
 // Optional: simple health check
 app.get('/health', (req, res) => {

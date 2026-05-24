@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon dist/index.js",
+    "start:dev": "nodemon --watch src --ext ts --exec \"npm run build && node dist/index.js\"",
     "install-express": "npm install express",
     "install-nodemon": "npm install nodemon",
     "install-swagger": "npm install swagger-ui-express swagger-jsdoc",

@@ -33,6 +33,30 @@ class UploaderService {
 
       return keyRequired.isKeyRequired as Promise<boolean>;
   }
+
+  async testCredentials(username: string, password: string, domain: string): Promise<boolean> {
+
+    let response = await fetch(
+      `${this.uploaderUrl}/sftp/testCredentials`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          remoteDirectory: '/uploads',
+          domain
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    return data as Promise<boolean>;
+    // end test code
+  }
 }
 
 export = UploaderService;

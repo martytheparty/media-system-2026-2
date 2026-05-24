@@ -1,20 +1,31 @@
 
 <h2 class="form-title mat-title-large">FTP Configuration</h2>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
-    <mat-form-field appearance="outline" class="full-width">
+<form
+  [formGroup]="form"
+  class="form-container"
+>
+  <mat-form-field appearance="outline" class="full-width">
     <mat-label>Username</mat-label>
     <input matInput formControlName="username">
     <mat-error>
       Username is required
     </mat-error>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline" class="full-width">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
     <mat-label>Password</mat-label>
     <input matInput formControlName="password">
     <mat-error>
       Password is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Server Name</mat-label>
+    <input matInput formControlName="server">
+    <mat-error>
+      Server Name is required
     </mat-error>
   </mat-form-field>
 
@@ -29,15 +40,17 @@
   <button
     mat-raised-button
     color="primary"
-    type="submit"
-    [disabled]="form.invalid">
+    type="button"
+    (click)="saveSettings()"
+    [disabled]="form.invalid || !credentialsValidated">
     Save
   </button>
 
   <button
     mat-raised-button
     color="primary"
-    type="submit"
+    type="button"
+    (click)="testSettings()"
     [disabled]="form.invalid">
     Test
   </button>
