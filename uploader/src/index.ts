@@ -3,6 +3,7 @@ const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('../swagger');
 const requirementsRouter = require('./routers/requirements.routes');
+const sftpRouter = require('./routers/sftp.routes');
 const app = express();
 
 // Middleware to parse JSON bodies (future-proof)
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/requirements', requirementsRouter);
+app.use('/sftp', sftpRouter);
 
 /**
  * @openapi

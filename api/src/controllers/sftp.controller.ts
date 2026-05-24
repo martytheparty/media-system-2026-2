@@ -1,4 +1,4 @@
-import UploaderService = require('../services/uploader.service');
+const UploaderService = require('../services/uploader.service');
 
 class SftpController {
 
@@ -10,15 +10,10 @@ class SftpController {
 
   async testCredential(req, res) {
 
-    const { username, password } = req.body;
+    const { username, password, remoteDirectory, domain } = req.body;
+    const result = await this.uploaderService.testCredentials(username, password, domain);
 
-    console.log(username, password, "----------");
-
-    this.uploaderService.testCredentials(username, password);
-
-    res.json({
-      result: true
-    });
+    res.json(result);
   }
 }
 

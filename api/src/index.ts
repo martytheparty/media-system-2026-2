@@ -5,10 +5,14 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('../swagger');
 import requirementsRouter = require('./routers/requirements.routes');
 import sftpRouter = require('./routers/sftp.routes');
+const BootStrapSetup = require('./bootstrap/setup');
+
+const bootStrapSetup = new BootStrapSetup();
 
 const cors = require('cors');
 const app = express();
 
+bootStrapSetup.setupDirectories();
 // Middleware to parse JSON bodies (future-proof)
 app.use(express.json());
 // Allow all origin

@@ -20,6 +20,7 @@ const controller = new SftpController();
  *               - username
  *               - password
  *               - remoteDirectory
+ *               - domain
  *             properties:
  *               username:
  *                 type: string
@@ -30,6 +31,9 @@ const controller = new SftpController();
  *               remoteDirectory:
  *                 type: string
  *                 example: /uploads
+ *               domain:
+ *                 type: string
+ *                 example: www.ilikeemail.com
  *     responses:
  *       200:
  *         description: Test result

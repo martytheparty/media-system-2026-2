@@ -1,5 +1,4 @@
-const express = require('express');
-import type { Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 
 const router = express.Router();
 

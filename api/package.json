@@ -13,7 +13,8 @@
     "install-nodefetchtypes": "npm install --save-dev @types/node-fetch",
     "install-cors": "npm install cors",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch src --ext ts --exec \"npm run build && node dist/index.js\""
   },
   "keywords": [],
   "author": "",

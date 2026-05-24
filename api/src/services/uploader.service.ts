@@ -34,16 +34,27 @@ class UploaderService {
       return keyRequired.isKeyRequired as Promise<boolean>;
   }
 
-  async testCredentials(userName: string, password: string): Promise<boolean> {
-    // start test code - replace with code that calls a function that tests credentials
-    console.log("user name", userName, " pw", password);
-    const response = await fetch(`${this.uploaderUrl}/isKeyRequired`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch uploader isKeyRequired config');
-    }
-    const keyRequired = await response.json() as any;
+  async testCredentials(username: string, password: string, domain: string): Promise<boolean> {
 
-    return keyRequired.isKeyRequired as Promise<boolean>;
+    let response = await fetch(
+      `${this.uploaderUrl}/sftp/testCredentials`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          remoteDirectory: '/uploads',
+          domain
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    return data as Promise<boolean>;
     // end test code
   }
 }
