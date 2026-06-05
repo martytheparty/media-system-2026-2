@@ -15,7 +15,7 @@ class UploaderService {
 
   async isFtpConfigured(): Promise<boolean> {
 
-      const response = await fetch(`${this.uploaderUrl}/isFtpConfigured`);
+      const response = await fetch(`${this.uploaderUrl}/requirements/isFtpConfigured`);
       if (!response.ok) {
       throw new Error('Failed to fetch uploader isFtpConfigured config');
       }
@@ -25,7 +25,7 @@ class UploaderService {
   }
 
  async isKeyRequired(): Promise<boolean> {
-    const response = await fetch(`${this.uploaderUrl}/isKeyRequired`);
+    const response = await fetch(`${this.uploaderUrl}/requirements/isKeyRequired`);
       if (!response.ok) {
       throw new Error('Failed to fetch uploader isKeyRequired config');
       }
