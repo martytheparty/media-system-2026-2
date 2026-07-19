@@ -1,7 +1,14 @@
-require('dotenv').config();
-
 const path = require('path');
 const fs = require('fs');
+
+console.log('CWD:', process.cwd());
+console.log('__dirname:', __dirname);
+
+
+require('dotenv').config({
+  path: path.resolve(process.cwd(), '../.env')
+});
+
 
 // first make sure the data folder exists
 class BootstrapSetup {
@@ -9,10 +16,12 @@ class BootstrapSetup {
         const baseDirectory = process.env.DATA_DIR;
         const uploadDirectory = process.env.UPLOAD_DIR;
         const mediaDirectory = process.env.MEDIA_DIR;
+        const credentialsDirectory = process.env.CREDENTIALS_DIR;
 
         console.log("BASE DIRECTORY", baseDirectory);
         console.log("UPLOAD DIRECTORY", uploadDirectory);
         console.log("MEDIA DIRECTORY", mediaDirectory);
+        console.log("CREDENTIALS DIRECTORY", credentialsDirectory);
 
         // Using sync FS calls intentionally during startup.
         // This runs once at bootstrap, so blocking is fine and keeps the code simple.
@@ -21,6 +30,7 @@ class BootstrapSetup {
         let baseDirectoryExists = fs.existsSync(baseDirectory);
         let uploadDirectoryExists = fs.existsSync(uploadDirectory);
         let mediaDirectoryExists = fs.existsSync(mediaDirectory);
+        let credentialsDirectoryExists = fs.existsSync(credentialsDirectory);
         
 
         if (baseDirectoryExists) {
@@ -41,6 +51,13 @@ class BootstrapSetup {
             uploadDirectoryExists = true;
          }
 
+         if (baseDirectoryExists && uploadDirectoryExists && !credentialsDirectoryExists) {
+            console.log('base data directory exists');
+            const credentialsDirectoryPath = fs.mkdirSync(credentialsDirectory, { recursive: true });
+            console.log("****** credentialsDirectoryPath", credentialsDirectoryPath);
+            credentialsDirectoryExists = true;
+         }
+
         if (baseDirectoryExists && !mediaDirectoryExists) {
             console.log('base data directory exists');
             const mediaDirectoryPath = fs.mkdirSync(mediaDirectory, { recursive: true });
@@ -50,14 +67,13 @@ class BootstrapSetup {
          if(
             baseDirectoryExists && 
             uploadDirectoryExists &&
-            mediaDirectoryExists
+            mediaDirectoryExists &&
+            credentialsDirectoryExists
         ) {
             console.log("😊😊😊 REQUIRED DIRECTORIES EXISTS");
          }
         
     }
-
-    setupDataDirctory(): void {}
 }
 
 export = BootstrapSetup;
