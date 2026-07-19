@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
+import RequirementController = require('../controllers/requirements.controller');
 
 const router = express.Router();
+const requirementsController = new RequirementController();
 
 /**
  * @openapi
@@ -28,7 +30,11 @@ router.get('/isFtpConfigured', (req: Request, res: Response) => {
 
 router.get('/isKeyRequired', (req, res) => {
   // Stubbed for now — real logic later
-  res.json({ isKeyRequired: true });
+  requirementsController.isKeyRequired().then( 
+    (result: boolean) => {
+      res.json({ isKeyRequired: result });
+    }
+   );
 });
 
 module.exports = router;

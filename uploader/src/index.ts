@@ -1,3 +1,4 @@
+import 'dotenv/config'; // loads .env first
 import type { Request, Response } from 'express';
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
