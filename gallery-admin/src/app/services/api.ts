@@ -20,5 +20,22 @@ export class Api {
     const endpoint = "/sftp/testCredentials";
     return this.httpClient.post<TestResult>(this.apiUrl + endpoint, sftpCredentials);
   }
+
+  getKeyRequired(): Observable<KeyRequired> {
+     const endpoint = "/requirements/isKeyRequired";
+     return this.httpClient.get<KeyRequired>(this.apiUrl + endpoint);
+  }
+
+  // 👀 untested
+  setKeyRequired(): Observable<boolean> {
+    const endpoint = "/requirements/createKey";
+    return this.httpClient.post<boolean>(this.apiUrl + endpoint, {});
+  }
+
+  // 👀 untested
+  unsetKeyRequired(): Observable<boolean> {
+    const endpoint = "/requirements/deleteKey";
+    return this.httpClient.post<boolean>(this.apiUrl + endpoint, {});
+  }
   
 }

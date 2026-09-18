@@ -14,10 +14,9 @@ class UploaderService {
   }
 
   async isFtpConfigured(): Promise<boolean> {
-
       const response = await fetch(`${this.uploaderUrl}/requirements/isFtpConfigured`);
       if (!response.ok) {
-      throw new Error('Failed to fetch uploader isFtpConfigured config');
+        throw new Error('Failed to fetch uploader isFtpConfigured config');
       }
       const ftpConfigured = await response.json() as any;
 
@@ -32,6 +31,20 @@ class UploaderService {
       const keyRequired = await response.json() as any;
 
       return keyRequired.isKeyRequired as Promise<boolean>;
+  }
+
+  async createKey(): Promise<boolean> {
+    const response = await fetch(`${this.uploaderUrl}/requirements/createKey`, {method: 'POST'});
+    const data = await response.json();
+
+    return data as Promise<boolean>;
+  }
+
+  async deleteKey(): Promise<boolean> {
+    const response = await fetch(`${this.uploaderUrl}/requirements/deleteKey`, {method: 'POST'});
+    const data = await response.json();
+
+    return data as Promise<boolean>;
   }
 
   async testCredentials(username: string, password: string, domain: string): Promise<boolean> {

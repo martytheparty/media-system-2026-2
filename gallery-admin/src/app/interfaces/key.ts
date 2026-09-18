@@ -1,0 +1,3 @@
+interface KeyRequired {
+  keyRequired: boolean;
+}

@@ -22,19 +22,59 @@ router.get('/isFtpConfigured', (req: Request, res: Response) => {
  * @openapi
  * /requirements/isKeyRequired:
  *   get:
- *     summary: Indicates whether uploader requires a key
+ *     summary: Indicates a key is required
  *     responses:
  *       200:
- *         description: FTP key requirement status
+ *         description: FTP key required status
  */
 
-router.get('/isKeyRequired', (req, res) => {
-  // Stubbed for now — real logic later
-  requirementsController.isKeyRequired().then( 
-    (result: boolean) => {
-      res.json({ isKeyRequired: result });
-    }
-   );
+router.get('/isKeyRequired', async (req: Request, res: Response) => {
+  const isKeyRequired = await requirementsController.isKeyRequired()
+  res.json({ isKeyRequired });
+});
+
+/**
+ * @openapi
+ * /requirements/createKey:
+ *   post:
+ *     summary: Creates an encryption key for stored credentials
+ *     responses:
+ *       200:
+ *         description: Encryption key created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 key:
+ *                   type: string
+ */
+
+router.post('/createKey', async (req: Request, res: Response) => {
+  const created = await requirementsController.setKey();
+  res.json({ created });
+});
+
+/**
+ * @openapi
+ * /requirements/deleteKey:
+ *   post:
+ *     summary: Deletes an encryption key for stored credentials
+ *     responses:
+ *       200:
+ *         description: Encryption key deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 key:
+ *                   type: string
+ */
+
+router.post('/deleteKey', async (req: Request, res: Response) => {
+  const deleted = await requirementsController.deleteKey();
+  res.json({ deleted });
 });
 
 module.exports = router;
