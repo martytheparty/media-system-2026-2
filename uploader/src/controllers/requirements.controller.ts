@@ -10,10 +10,19 @@ class RequirementController {
     }
 
     async isKeyRequired(): Promise<boolean> {
-        console.log("CHECKING IS KEY REQUIRED");
         const keyRequired = await this.requirementsService.isKeyRequired();
-        console.log("CHECKING IS KEY REQUIRED", keyRequired);
+ 
         return keyRequired;
+    }
+
+    async setKey(): Promise<boolean> {
+        const keyFileCreated = await this.requirementsService.generateKeyFile();
+        return keyFileCreated;
+    }
+
+    async deleteKey(): Promise<boolean> {
+        const keyFileDeleted = await this.requirementsService.deleteKeyFile();
+        return keyFileDeleted;
     }
 }
 

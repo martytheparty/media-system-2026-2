@@ -41,7 +41,7 @@ app.get('/health', (req: Request, res: Response) => {
 
 
 // Start the server
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.UPLOADERPORT || 4000;
 app.listen(PORT, () => {
   console.log(`Uploader listening on port ${PORT}`);
 });

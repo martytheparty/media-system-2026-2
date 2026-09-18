@@ -13,7 +13,8 @@
     "sApi": "ng g s services/api",
     "iRequirements": "ng g i interfaces/requirements",
     "cKeyDialog": "ng g c dialogs/key",
-    "cSettingsDialog": "ng g c dialogs/sftpSettings"
+    "cSettingsDialog": "ng g c dialogs/sftpSettings",
+    "keyservice": "ng g s dialogs/key/key-service"
   },
   "prettier": {
     "printWidth": 100,

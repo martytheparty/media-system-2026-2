@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { 
+  Component, 
+  OnDestroy, 
+  OnInit, 
+  inject,
+  signal,
+  WritableSignal
+} from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,9 +34,14 @@ export class Header implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
+  keyRequired = false;
+
+  keyRequiredSignal: WritableSignal<boolean> = signal<boolean>(false);
+
   constructor() {
     this.subscription = this.api.getRequirements().subscribe( (requirements: Requirements) => {
-      console.log("requirements", requirements);
+      this.keyRequired = requirements.keyRequired;
+      this.keyRequiredSignal.set(this.keyRequired);
     } );
   }
   ngOnDestroy(): void {

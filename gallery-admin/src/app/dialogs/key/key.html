@@ -1,6 +1,17 @@
 <h2 mat-dialog-title>Set Key</h2>
 <mat-dialog-content class="mat-typography">
+  <form class="form">
   <h3>Optional Key</h3>
+  <p>
+    
+      <mat-label>The key is currently:</mat-label>
+      <mat-checkbox
+        [checked]="keyService.keyRequired().keyRequired" 
+        (change)="setRequired($event)"
+      >Required</mat-checkbox>
+      
+
+  </p>
   <p>
     Setting the keys may be required and keys are not stored... so if you forget it, it is not recoverable; but you can set the
     credentials again.
@@ -12,7 +23,7 @@
     get your credentials.  But if you set up a key then the credentials can't be determined without key.
   </p>
 
-  <form class="form">
+
   <mat-form-field>
     <mat-label>Key</mat-label>
     <input matInput placeholder="Ex. 1234" value="">
