@@ -14,7 +14,9 @@
     "iRequirements": "ng g i interfaces/requirements",
     "cKeyDialog": "ng g c dialogs/key",
     "cSettingsDialog": "ng g c dialogs/sftpSettings",
-    "keyservice": "ng g s dialogs/key/key-service"
+    "keyservice": "ng g s dialogs/key/key-service",
+    "ng22": "ng update @angular/cli@^22 @angular/core@^22",
+    "ng22m": "ng update @angular/material@^22"
   },
   "prettier": {
     "printWidth": 100,
