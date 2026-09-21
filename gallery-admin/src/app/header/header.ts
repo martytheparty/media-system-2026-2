@@ -1,10 +1,11 @@
-import { 
-  Component, 
-  OnDestroy, 
-  OnInit, 
+import {
+  Component,
+  OnDestroy,
+  OnInit,
   inject,
   signal,
-  WritableSignal
+  WritableSignal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +26,7 @@ import { SftpSettings } from '../dialogs/sftp-settings/sftp-settings';
     MatDialogModule
   ],
   templateUrl: './header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.scss',
 })
 export class Header implements OnInit, OnDestroy {

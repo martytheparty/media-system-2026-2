@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './key.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './key.scss',
 })
 export class KeyDialogComponent {

@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +16,7 @@ import { SftpCredentials, TestResult } from '../../interfaces';
     MatButtonModule,
   ],
   templateUrl: './sftp-settings.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sftp-settings.scss',
 })
 export class SftpSettings {
