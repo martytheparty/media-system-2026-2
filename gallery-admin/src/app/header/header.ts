@@ -1,10 +1,11 @@
-import { 
-  Component, 
-  OnDestroy, 
-  OnInit, 
+import {
+  Component,
+  OnDestroy,
+  OnInit,
   inject,
   signal,
-  WritableSignal
+  WritableSignal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +16,7 @@ import { Requirements } from '../interfaces';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { KeyDialogComponent } from '../dialogs/key/key';
 import { SftpSettings } from '../dialogs/sftp-settings/sftp-settings';
+import { KeyService } from '../dialogs/key/key-service';
 
 @Component({
   selector: 'app-header',
@@ -25,11 +27,13 @@ import { SftpSettings } from '../dialogs/sftp-settings/sftp-settings';
     MatDialogModule
   ],
   templateUrl: './header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.scss',
 })
 export class Header implements OnInit, OnDestroy {
 
   private api: Api = inject(Api);
+  keyService: KeyService = inject(KeyService);
   readonly dialog = inject(MatDialog);
 
   private subscription: Subscription;

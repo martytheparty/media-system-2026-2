@@ -8,7 +8,7 @@
     <mat-icon
       (click)="openKeyDialog()"
       class="key"
-      [class.required]="keyRequiredSignal()"
+      [class.required]="keyService.keyRequired().keyRequired"
       title="key is required"
     >key</mat-icon>
   </div>

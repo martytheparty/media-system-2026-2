@@ -37,6 +37,24 @@
     </mat-error>
   </mat-form-field>
 
+  @if(keyService.keyRequired().keyRequired) {
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Key</mat-label>
+      <input matInput formControlName="key">
+      <mat-error>
+        Key Is A Required Field
+      </mat-error>
+    </mat-form-field>
+  }
+  
+  <div class="checkbox-field">
+    <mat-checkbox
+      [checked]="keyService.keyRequired().keyRequired"
+      (change)="keyService.setRequired($event)">
+      Key Required
+    </mat-checkbox>
+  </div>
+
   <button
     mat-raised-button
     color="primary"
@@ -46,12 +64,19 @@
     Save
   </button>
 
+  <!-- PUT THE SPINNER IN THE BUTTON WHILE TESTING  -->
   <button
     mat-raised-button
     color="primary"
     type="button"
     (click)="testSettings()"
     [disabled]="form.invalid">
+    @if(testingInProcess) {
+      <mat-spinner color="accent" diameter="20"></mat-spinner>
+    }
     Test
   </button>
+  @if(testComplete) {
+  <span>Last Test Result: {{credentialsValidated}}</span>
+  }
 </form>

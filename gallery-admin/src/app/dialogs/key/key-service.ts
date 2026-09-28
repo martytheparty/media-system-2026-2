@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Api } from '../../services/api';
 import { take } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,25 @@ export class KeyService {
       }
     );
   }
-}
 
+  setRequired(event: MatCheckboxChange): void
+    {
+    // These two need to be tests
+    if (event.checked) {
+      this
+      .apiService
+      .setKeyRequired()
+      .subscribe( (result) => {
+        this.checkForKeyRequirement();
+      } );
+    } else {
+      this
+      .apiService
+      .unsetKeyRequired()
+      .subscribe( (result) => {
+        this.checkForKeyRequirement();
+      } );
+    }
+  }
+}
 

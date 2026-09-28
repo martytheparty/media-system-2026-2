@@ -7,7 +7,7 @@
       <mat-label>The key is currently:</mat-label>
       <mat-checkbox
         [checked]="keyService.keyRequired().keyRequired" 
-        (change)="setRequired($event)"
+        (change)="keyService.setRequired($event)"
       >Required</mat-checkbox>
       
 
