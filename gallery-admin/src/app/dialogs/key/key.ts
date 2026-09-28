@@ -36,25 +36,4 @@ export class KeyDialogComponent {
     );
   }
 
-  setRequired(event: MatCheckboxChange): void
-  {
-    // These two need to be tests
-    if (event.checked) {
-      this
-      .api
-      .setKeyRequired()
-      .subscribe( (result) => {
-        console.log("result", result);
-      } );
-    } else {
-      this
-      .api
-      .unsetKeyRequired()
-      .subscribe( (result) => {
-        console.log("result", result);
-      } );
-    }
-
-    // I NEED TO CREATE A SET REQUIRED FUNCTION IN THE API SERVICE
-  }
 }

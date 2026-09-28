@@ -9,3 +9,10 @@
   margin: 15px;
   text-align: center;
 }
+
+button mat-spinner {
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 8px;
+  transform: translateY(2px);
+}

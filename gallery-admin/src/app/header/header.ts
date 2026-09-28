@@ -16,6 +16,7 @@ import { Requirements } from '../interfaces';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { KeyDialogComponent } from '../dialogs/key/key';
 import { SftpSettings } from '../dialogs/sftp-settings/sftp-settings';
+import { KeyService } from '../dialogs/key/key-service';
 
 @Component({
   selector: 'app-header',
@@ -32,6 +33,7 @@ import { SftpSettings } from '../dialogs/sftp-settings/sftp-settings';
 export class Header implements OnInit, OnDestroy {
 
   private api: Api = inject(Api);
+  keyService: KeyService = inject(KeyService);
   readonly dialog = inject(MatDialog);
 
   private subscription: Subscription;
